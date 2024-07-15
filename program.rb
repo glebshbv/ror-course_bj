@@ -2,6 +2,8 @@
 
 class Program
 
+attr_reader :player, :dealer
+
   def initialize
     @player = nil
     @dealer = nil
@@ -20,6 +22,7 @@ class Program
     puts "Dealer #{@dealer.name} with balance #{@dealer.balance} is ready"
     create_deck
     puts "Deck has been created."
+    release_initial_hand
   end
 
   def create_player
@@ -51,4 +54,21 @@ class Program
     @cards_in_game
   end
 
+  def release_initial_hand
+    2.times do
+      deal_card(@player, @cards_in_game.sample)
+      deal_card(@dealer, @cards_in_game.sample)
+    end
+  end
+
+  def deal_card(player, card)
+    remove_card_from_deck(card)
+    player.add_card_to_hand(card)
+    puts "Dealt #{card.to_s} to #{player.name}"
+  end
+
+  def remove_card_from_deck(card)
+    @cards_in_game.delete(card)
+    @cards_played << card
+  end
 end

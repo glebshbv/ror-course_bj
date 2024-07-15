@@ -1,7 +1,7 @@
 class Card
   attr_reader :suit, :rank
 
-  SUITS = %w[Hearts Diamonds Clubs Spades]
+  SUITS = ['♥', '♦', '♣', '♠']
   RANKS = %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace]
 
   def initialize(suit, rank)
@@ -12,7 +12,7 @@ class Card
   end
 
   def to_s
-    "#{@rank} of #{@suit}"
+    "#{@rank} #{@suit}"
   end
 
 end
