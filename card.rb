@@ -15,4 +15,20 @@ class Card
     "#{@rank} #{@suit}"
   end
 
+  def value
+    return 11 if self.is_ace?
+    return 10 if self.is_face_card?
+    return @rank.to_i
+  end
+
+  private
+
+  def is_ace?
+    @rank == 'Ace'
+  end
+
+  def is_face_card?
+    %w[Jack Queen King].include?(@rank)
+  end
+
 end

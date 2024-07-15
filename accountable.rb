@@ -1,6 +1,6 @@
 module Accountable
   attr_accessor :name, :balance
-  attr_reader :cards_on_hand
+  attr_reader :cards_on_hand, :hand_sum
 
   def balance
     @balance
@@ -10,5 +10,15 @@ module Accountable
     @cards_on_hand << card
   end
 
+  def hand_sum
+    adjust_for_ace(@cards_on_hand.reduce(0) {|sum, card| sum + card.value })
+  end
+
+  private
+
+  def adjust_for_ace(sum)
+    sum -= 10 if sum > 21
+    sum
+  end
 
 end

@@ -2,7 +2,7 @@
 
 class Program
 
-attr_reader :player, :dealer
+attr_reader :player, :dealer, :cards_in_game, :cards_played
 
   def initialize
     @player = nil
@@ -23,6 +23,7 @@ attr_reader :player, :dealer
     create_deck
     puts "Deck has been created."
     release_initial_hand
+
   end
 
   def create_player
@@ -48,10 +49,6 @@ attr_reader :player, :dealer
         @cards_in_game << Card.new(suit, rank)
       end
     end
-  end
-
-  def cards_in_game
-    @cards_in_game
   end
 
   def release_initial_hand
