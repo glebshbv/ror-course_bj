@@ -5,3 +5,5 @@ require_relative 'program'
 program = Program.new
 
 program.start
+
+puts program.inspect
