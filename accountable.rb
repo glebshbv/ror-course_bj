@@ -17,7 +17,9 @@ module Accountable
   private
 
   def adjust_for_ace(sum)
-    sum -= 10 if sum > 21
+    @cards_on_hand.count { |card| card.is_ace? }.times do
+      sum -= 10 if sum > 21
+    end
     sum
   end
 

@@ -4,8 +4,8 @@ class Dealer
   include Accountable
 
   def initialize(name = :Dealer)
+    @name = name
     @balance = 100
-    @name= name
     @cards_on_hand = []
   end
 
@@ -16,7 +16,7 @@ class Dealer
 
   def make_decision
     loop do
-      puts "step1: #{self.hand_sum}"
+      puts "Sum of cards: #{self.hand_sum}"
       puts "n of cards: #{@cards_on_hand.count}"
       skip_turn if self.hand_sum >= 17
       break if @cards_on_hand.count == 3

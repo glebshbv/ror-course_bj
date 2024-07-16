@@ -19,9 +19,8 @@ class Card
     return 11 if self.is_ace?
     return 10 if self.is_face_card?
     return @rank.to_i
+    # TODO: add a check when 3 aces
   end
-
-  private
 
   def is_ace?
     @rank == 'Ace'
