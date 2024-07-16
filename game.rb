@@ -1,4 +1,5 @@
 class Game
+  attr_accessor :bank
   attr_reader :player, :dealer, :cards_in_game, :cards_played, :game_id
 
   def initialize(player, dealer)
@@ -13,15 +14,20 @@ class Game
     @player.game = self
     @dealer.game = self
     create_deck
-    puts "Deck has been created."
+    [@player, @dealer].each {|u| make_first_bet(u)}
     release_initial_hand
   end
 
-  def game
+  def start_game
     # показать сумму очков
     #дать выбор пропустить, добавить карту, открыть карту
     #дилер делает ход
     @dealer.play
+  end
+
+  def make_first_bet(user)
+    user.place_starting_bet
+    @bank.add_balance(10)
   end
 
   def make_move(player)

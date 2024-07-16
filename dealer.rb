@@ -16,8 +16,6 @@ class Dealer
 
   def make_decision
     loop do
-      puts "Sum of cards: #{self.hand_sum}"
-      puts "n of cards: #{@cards_on_hand.count}"
       skip_turn if self.hand_sum >= 17
       break if @cards_on_hand.count == 3
       @game.make_move(self)

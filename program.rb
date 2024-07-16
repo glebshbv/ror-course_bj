@@ -13,9 +13,9 @@ attr_reader :player, :dealer, :game
   def start
     prepare_players
     @game = Game.new(@player, @dealer)
-    @game.setup_game
-    puts "Game ID: #{@game.game_id}"
-    @game.game
+    game.bank = prepare_bank
+    game.setup_game
+    game.start_game
     #method to finish game
   end
 
@@ -23,9 +23,9 @@ attr_reader :player, :dealer, :game
 
   def prepare_players
     create_player
-    puts "Player #{@player.name} with balance #{@player.balance} is ready"
+    # puts "Player #{@player.name} with balance #{@player.balance} is ready"
     create_dealer
-    puts "Dealer #{@dealer.name} with balance #{@dealer.balance} is ready"
+    # puts "Dealer #{@dealer.name} with balance #{@dealer.balance} is ready"
   end
 
   def create_player
@@ -44,6 +44,10 @@ attr_reader :player, :dealer, :game
     # puts "Please enter your name"
     # make_choice
     "Debug Player"
+  end
+
+  def prepare_bank
+    Bank.new(player, dealer, game)
   end
 
 end
