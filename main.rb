@@ -3,6 +3,7 @@ require_relative 'name_is_null'
 require_relative 'player'
 require_relative 'dealer'
 require_relative 'card'
+require_relative 'game'
 require_relative 'program'
 
 program = Program.new
@@ -15,6 +16,6 @@ puts "Dealer cards on hand #{program.dealer.cards_on_hand}"
 puts "Player's hand sum: #{program.player.hand_sum}"
 puts "Dealer's hand sum: #{program.dealer.hand_sum}"
 
-program.cards_played.each {|cc| puts cc.value}
+program.game.cards_played.each {|cc| puts cc.value}
 
 # cards.each {|cc| puts cc.to_s}
