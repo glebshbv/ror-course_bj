@@ -14,7 +14,8 @@ attr_reader :player, :dealer, :game
     prepare_players
     @game = Game.new(@player, @dealer)
     @game.setup_game
-    puts @game.game_id
+    puts "Game ID: #{@game.game_id}"
+    @game.game
     #method to finish game
   end
 
@@ -40,8 +41,9 @@ attr_reader :player, :dealer, :game
   end
 
   def prepare_player
-    puts "Please enter your name"
-    make_choice
+    # puts "Please enter your name"
+    # make_choice
+    "Debug Player"
   end
 
 end

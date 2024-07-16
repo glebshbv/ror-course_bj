@@ -10,13 +10,22 @@ class Game
   end
 
   def setup_game
+    @player.game = self
+    @dealer.game = self
     create_deck
     puts "Deck has been created."
     release_initial_hand
   end
 
   def game
+    # показать сумму очков
+    #дать выбор пропустить, добавить карту, открыть карту
+    #дилер делает ход
+    @dealer.play
+  end
 
+  def make_move(player)
+    deal_card(player)
   end
 
   private
@@ -36,12 +45,13 @@ class Game
 
   def release_initial_hand
     2.times do
-      deal_card(@player, @cards_in_game.sample)
-      deal_card(@dealer, @cards_in_game.sample)
+      deal_card(@player)
+      deal_card(@dealer)
     end
   end
 
-  def deal_card(player, card)
+  def deal_card(player)
+    card = @cards_in_game.sample
     remove_card_from_deck(card)
     player.add_card_to_hand(card)
     puts "Dealt #{card.to_s} to #{player.name}"

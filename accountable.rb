@@ -1,5 +1,5 @@
 module Accountable
-  attr_accessor :name, :balance
+  attr_accessor :name, :balance, :game
   attr_reader :cards_on_hand, :hand_sum
 
   def balance
