@@ -17,4 +17,13 @@ class Bank
     @balance -= amount
   end
 
+  def return_all_money
+    @balance -= 20
+  end
+
+  def release_winning(winner)
+    @games_played << game
+    winner.collect_win(balance)
+    @balance = 0
+  end
 end

@@ -15,6 +15,18 @@ module Accountable
     reduce_balance(10)
   end
 
+  def show_hand
+    "#{@cards_on_hand.map { |card| "| #{card} |" }.join(" ")}"
+  end
+
+  def collect_win(amount)
+    increase_balance(amount)
+  end
+
+  def adjust_for_draw
+    @balance + 10
+  end
+
   private
 
   def reduce_balance(amount)
@@ -26,10 +38,15 @@ module Accountable
   end
 
   def adjust_for_ace(sum)
-    @cards_on_hand.count { |card| card.is_ace? }.times do
-      sum -= 10 if sum > 21
+    aces_count = @cards_on_hand.count { |card| card.is_ace? }
+    if aces_count == 3
+      sum = 13
+    else
+      while aces_count > 0 && sum > 21
+        sum -= 10
+        aces_count -= 1
+      end
     end
     sum
   end
-
 end

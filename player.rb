@@ -21,4 +21,11 @@ class Player
     false
   end
 
+  def game_balance
+    puts "Your current balance is $#{@balance}"
+  end
+
+  def game_hand_sum
+    puts "Your hand points sum is #{adjust_for_ace(@cards_on_hand.reduce(0) {|sum, card| sum + card.value })}"
+  end
 end

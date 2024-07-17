@@ -21,8 +21,4 @@ class Dealer
       @game.make_move(self)
     end
   end
-
-  def skip_turn
-    puts "I skipped turn"
-  end
 end
